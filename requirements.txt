@@ -8,4 +8,5 @@ streamlit==1.26.0
 youtube-transcript-api==0.6.1
 yt-dlp==2023.11.16transformers==4.33.2beautifulsoup4==4.12.2
 pypdf==3.16.0
+urllib3==1.26.18
 
