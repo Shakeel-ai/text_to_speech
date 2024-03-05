@@ -169,10 +169,10 @@ def generate_speech(text,file_name):
 
 def translator(text):
     from transformers import pipeline
-pipe = pipeline(model="HaiderSultanArc/t5-small-english-to-urdu")
-response = pipe(text)
-ur_text = response[0]['translation_text']
-return ur_text
+    pipe = pipeline(model="HaiderSultanArc/t5-small-english-to-urdu")
+    response = pipe(text)
+    ur_text = response[0]['translation_text']
+    return ur_text
 
 
 
