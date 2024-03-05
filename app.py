@@ -10,7 +10,7 @@ from langchain.document_transformers import BeautifulSoupTransformer
 import os
 from urllib.parse import urlparse
 from openai import OpenAI
-from transformers import pipline
+from transformers import pipeline
 openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 st.set_page_config(page_title="M. Shakeel")
