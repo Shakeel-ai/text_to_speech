@@ -11,6 +11,7 @@ import os
 from urllib.parse import urlparse
 from openai import OpenAI
 from transformers import pipeline
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 st.set_page_config(page_title="M. Shakeel")
@@ -168,8 +169,9 @@ def generate_speech(text,file_name):
     response.stream_to_file(file_path)
 
 def translator(text):
-    from transformers import pipeline
-    pipe = pipeline(model="HaiderSultanArc/t5-small-english-to-urdu")
+    tokenizer = AutoTokenizer.from_pretrained("HaiderSultanArc/t5-small-english-to-urdu")
+    model = AutoModelForSeq2SeqLM.from_pretrained("HaiderSultanArc/t5-small-english-to-urdu")
+    pipe = pipeline("translation", model="HaiderSultanArc/t5-small-english-to-urdu")
     response = pipe(text)
     ur_text = response[0]['translation_text']
     return ur_text
