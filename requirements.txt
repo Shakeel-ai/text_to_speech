@@ -11,5 +11,5 @@ transformers==4.33.2
 beautifulsoup4==4.12.2
 pypdf==3.16.0
 urllib3==1.26.18
-tensorflow==2.0
+tensorflow==2.9.3
 
