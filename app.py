@@ -10,7 +10,7 @@ from langchain.document_transformers import BeautifulSoupTransformer
 import os
 from urllib.parse import urlparse
 from openai import OpenAI
-from googletrans import Translator
+#from googletrans import Translator
 openai_api_key = st.secrets["OPENAI_API_KEY"]
 
 st.set_page_config(page_title="M. Shakeel")
@@ -33,9 +33,9 @@ def main():
                     if text:
                         chunks = get_text_chunks(text)
                         for chunk in chunks:
-                            ur_text = translator(chunk)
+                            #ur_text = translator(chunk)
                             y_file_name = "yotube"
-                            generate_speech(text=ur_text,file_name=y_file_name)
+                            generate_speech(text=chunk,file_name=y_file_name)
                         audio_file = open(f"{y_file_name}.mp3","rb")
                         audio_bytes = audio_file.read()
                         st.audio(audio_bytes)
@@ -46,8 +46,8 @@ def main():
                         chunks = get_text_chunks(text)
                         w_file_name = "website"
                         for chunk in chunks:
-                            ur_text = translator(chunk)
-                            generate_speech(text=ur_text,file_name=w_file_name)
+                            #ur_text = translator(chunk)
+                            generate_speech(text=chunk,file_name=w_file_name)
                         audio_file = open(f"{w_file_name}.mp3","rb")
                         audio_bytes = audio_file.read()
                         st.audio(audio_bytes)
@@ -62,8 +62,8 @@ def main():
                     if text:
                         chunks = get_text_chunks(text)
                         for chunk in chunks:
-                            ur_text = translator(chunk)
-                            generate_speech(ur_text,f_file_name)
+                            #ur_text = translator(chunk)
+                            generate_speech(chunk,f_file_name)
                         audio_file = open(f"{f_file_name}.mp3","rb")
                         audio_bytes = audio_file.read()
                         st.audio(audio_bytes)
@@ -73,11 +73,11 @@ def main():
             
         if text_input:
             file_name="given_text"
-            if st.button("Translate"):
-                ur_text = translator(text_input)
-                generate_speech(ur_text,file_name=file_name)
-            else:
-                generate_speech(text_input,file_name=file_name)
+            #if st.button("Translate"):
+                #ur_text = translator(text_input)
+                #generate_speech(ur_text,file_name=file_name)
+            
+            generate_speech(text_input,file_name=file_name)
 
             audio_file = open(f"{file_name}.mp3","rb")
             audio_bytes = audio_file.read()
